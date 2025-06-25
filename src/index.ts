@@ -542,9 +542,8 @@ const html = `<!DOCTYPE html>
 
 export default {
   async fetch(request, env) {
-    if(request.url === '/api/img-create' && request.method === 'POST') {
+    if(request.url === 'https://ai-img.qf-butterfly.top/api/img-create' && request.method === 'POST') {
       const formdata = await request.formData()
-    
       const inputs: any = {};
       for (const [k, v] of formdata) {
         if(k === 'prompt' || k === 'negative_prompt') {
@@ -577,7 +576,6 @@ export default {
           }
         }
       }
-  
       const response = await env.AI.run(
         "@cf/stabilityai/stable-diffusion-xl-base-1.0",
         inputs,
